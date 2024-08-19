@@ -6,13 +6,18 @@ package questao_extra;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class ContaBancaria {
 
     private String numero;
     private String titular;
     private double saldo;
+    
+    public ContaBancaria(String numero, String titular) throws IllegalArgumentException{
+        setNumero(numero);
+        setTitular(titular);                      
+    }
 
     /**
      * Permite ler o atributo numero
@@ -34,10 +39,10 @@ public class ContaBancaria {
         }
         this.numero = numero;
     }
-    
+
     /**
      * Permite ler o atributo titular
-     * 
+     *
      * @return valor do titular da conta
      */
     public String getTitular() {
@@ -46,8 +51,8 @@ public class ContaBancaria {
 
     /**
      * Permite alterar o titular da conta
-     * 
-     * @param titular valor do titular da conta 
+     *
+     * @param titular valor do titular da conta
      */
     public void setTitular(String titular) {
         if (titular == null || titular.trim().equals("")) {
@@ -58,21 +63,21 @@ public class ContaBancaria {
 
     /**
      * Permirte ler o atributo saldo
-     * 
-     * @return 
+     *
+     * @return
      */
     public double getSaldo() {
         return saldo;
     }
 
-    public void depositar(double valor) {
+    public void depositar(double valor) throws IllegalArgumentException{
         if (valor <= 0) {
             throw new IllegalArgumentException("Valor a ser depositado deve ser maior que 0!");
         }
         this.saldo += valor;
     }
 
-    public void sacar(double valor) {
+    public void sacar(double valor) throws IllegalArgumentException{
         if (valor <= 0) {
             throw new IllegalArgumentException("Valor a ser depositado deve ser maior que 0!");
         }
