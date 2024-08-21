@@ -5,6 +5,7 @@
 package questao_extra;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Tela extends JFrame {
      */
     public Tela() {
         initComponents();
+        contas = new ContaBancaria[10];
     }
 
     /**
@@ -28,15 +30,18 @@ public class Tela extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jtfNumeroConta = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jftTitular = new javax.swing.JTextField();
+        jtfTitular = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jtfValor = new javax.swing.JTextField();
         jbtCriarConta = new javax.swing.JButton();
         jbtDepositar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jlbSaldo = new javax.swing.JLabel();
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Conta Bancaria");
@@ -51,8 +56,8 @@ public class Tela extends JFrame {
         jLabel2.setText("Titular");
         getContentPane().add(jLabel2);
 
-        jftTitular.setPreferredSize(new java.awt.Dimension(80, 22));
-        getContentPane().add(jftTitular);
+        jtfTitular.setPreferredSize(new java.awt.Dimension(80, 22));
+        getContentPane().add(jtfTitular);
 
         jLabel3.setText("Valor");
         getContentPane().add(jLabel3);
@@ -69,17 +74,56 @@ public class Tela extends JFrame {
         getContentPane().add(jbtCriarConta);
 
         jbtDepositar.setText("Depositar");
+        jbtDepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtDepositarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jbtDepositar);
 
-        jLabel4.setText("Saldo");
-        getContentPane().add(jLabel4);
+        jlbSaldo.setText("Saldo");
+        getContentPane().add(jlbSaldo);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCriarContaActionPerformed
-        
+        String numeroConta = jtfNumeroConta.getText();
+
+        if (buscar(numeroConta) == null && quantidadeContas < contas.length) {
+            String titular = jtfTitular.getText();
+            ContaBancaria conta = new ContaBancaria(numeroConta, titular);
+            contas[quantidadeContas] = conta;
+            quantidadeContas++;
+
+            JOptionPane.showMessageDialog(this, "Conta criada");
+        } else {
+            JOptionPane.showMessageDialog(this, "Conta já existe ou já está cheio");
+        }
     }//GEN-LAST:event_jbtCriarContaActionPerformed
+
+    private void jbtDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtDepositarActionPerformed
+        String numeroConta = jtfNumeroConta.getText();
+        ContaBancaria conta = buscar(numeroConta);
+        if (conta != null) {
+            float valor = Float.parseFloat(jtfValor.getText());
+            conta.depositar(valor);
+            jlbSaldo.setText("Saldo R$" + conta.getSaldo());
+        } else {
+            JOptionPane.showMessageDialog(null, "Conta não existe");
+    }//GEN-LAST:event_jbtDepositarActionPerformed
+
+    }
+
+    private ContaBancaria buscar(String numeroConta) {
+        for (ContaBancaria c : contas) {
+            if (c != null && c.getNumero().trim().equalsIgnoreCase(numeroConta)) {
+                return c;
+            }
+        }
+        return null;
+
+    }
 
     /**
      * @param args the command line arguments
@@ -115,16 +159,19 @@ public class Tela extends JFrame {
             }
         });
     }
+    private ContaBancaria[] contas;
+    private int quantidadeContas;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jbtCriarConta;
     private javax.swing.JButton jbtDepositar;
-    private javax.swing.JTextField jftTitular;
+    private javax.swing.JLabel jlbSaldo;
     private javax.swing.JTextField jtfNumeroConta;
+    private javax.swing.JTextField jtfTitular;
     private javax.swing.JTextField jtfValor;
     // End of variables declaration//GEN-END:variables
 }
