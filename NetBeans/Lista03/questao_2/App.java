@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class App {
 
@@ -31,9 +31,12 @@ public class App {
             funcionarios[i] = imposto;
         }
 
+        String mensagem = "";
         for (int i = 0; i < 5; i++) {
-            JOptionPane.showMessageDialog(null, funcionarios[i].getNome() + ": Salário = R$ " + funcionarios[i].getSalario() + "\nValor de imposto de renda a ser pago: R$ " + df.format(funcionarios[i].calcularIrpf()));
+            mensagem += funcionarios[i].getNome() + ": Salário = R$ " + funcionarios[i].getSalario() + "\nValor de imposto de renda a ser pago: R$ " + df.format(funcionarios[i].calcularIrpf()) + "\n";
+
         }
+        JOptionPane.showMessageDialog(null, mensagem);
     }
 
     public static void main(String[] args) {

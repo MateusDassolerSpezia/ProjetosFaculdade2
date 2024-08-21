@@ -9,10 +9,10 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class App {
-    public App() {
+     public App() {
         DecimalFormat df = new DecimalFormat("0.00");
         Funcionario imposto = new Funcionario();
         
