@@ -6,17 +6,16 @@ package questao_1;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class Ponto {
     private int x;
     private int y;
     
     public Ponto() {
-        x = 0;
-        y = 0;
+        
     }
-    public Ponto(int x, int y) {
+    public Ponto(int x, int y) throws IllegalArgumentException{
         setX(x);
         setY(y);
     }
@@ -69,6 +68,6 @@ public class Ponto {
     }
     
     public double calcularDistancia(Ponto p1, Ponto p2) {
-        
+        return Math.sqrt((Math.pow(p2.x, 2) - Math.pow(p1.x, 2)) + (Math.pow(p2.y, 2) - Math.pow(p1.y, 2)));
     }
 }

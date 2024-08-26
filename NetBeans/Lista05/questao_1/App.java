@@ -6,7 +6,7 @@ package questao_1;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class App {
     public App() {
