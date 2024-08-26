@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package questao_1;
+package questao_4;
 
 
 
@@ -10,15 +10,15 @@ package questao_1;
  *
  * @author Mateus
  */
-public class Retangulo {
+public class Retangulo4 {
     private int altura;
     private int comprimento;
     
-    public Retangulo() throws IllegalArgumentException {
+    public Retangulo4() throws IllegalArgumentException {
         setAltura(0);
         setComprimento(0);
     }
-    public Retangulo(int comprimento, int altura) throws IllegalArgumentException {
+    public Retangulo4(int comprimento, int altura) throws IllegalArgumentException {
         setComprimento(comprimento);
         setAltura(altura);
     }

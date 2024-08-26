@@ -2,30 +2,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package questao_1;
-
+package questao_2;
 
 
 /**
  *
  * @author Mateus
  */
-public class Retangulo {
+public class Retangulo2 {
     private int altura;
     private int comprimento;
     
-    public Retangulo() throws IllegalArgumentException {
+    public Retangulo2() throws IllegalArgumentException {
         setAltura(0);
         setComprimento(0);
     }
-    public Retangulo(int comprimento, int altura) throws IllegalArgumentException {
+    public Retangulo2(int comprimento, int altura) throws IllegalArgumentException {
         setComprimento(comprimento);
         setAltura(altura);
     }
     
     public void setAltura(int altura) {
         if (altura <= 0) {
-            throw new IllegalArgumentException("Valor incorreto para a altura: " + getAltura());
+            throw new IllegalArgumentException("Valor incorreto para a altura: " + this.altura);
         }
         this.altura = altura;
     }
@@ -38,7 +37,7 @@ public class Retangulo {
     }
     public void setComprimento(int comprimento) {
         if (comprimento <= 0) {
-            throw new IllegalArgumentException("Valor incorreto para o comprimento: " + getComprimento());
+            throw new IllegalArgumentException("Valor incorreto para o comprimento: " + this.comprimento);
         }
         this.comprimento = comprimento;
     }
