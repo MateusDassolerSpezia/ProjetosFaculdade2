@@ -5,21 +5,27 @@
 package questao_2;
 
 import javax.swing.JOptionPane;
+import questao_1.Retangulo;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class AppQuestao2Ui {
 
     public AppQuestao2Ui() {
-        //Retangulo ret = new Retangulo2();
+        try {
+            Retangulo ret = new Retangulo();
+            int comprimento = Integer.parseInt(JOptionPane.showInputDialog("Comprimento (em cm): "));
+            int altura = Integer.parseInt(JOptionPane.showInputDialog("Altura (em cm): "));
 
-        int comprimento = Integer.parseInt(JOptionPane.showInputDialog("Comprimento (em cm): "));
-        int altura = Integer.parseInt(JOptionPane.showInputDialog("Altura (em cm): "));
-        Retangulo2 ret = new Retangulo2();
+            ret.setAltura(altura);
+            ret.setComprimento(comprimento);
 
-        JOptionPane.showMessageDialog(null, "Perímetro: " + ret.calcularPerimetro() + " cm" + "\nÁrea: " + ret.calcularArea() + " cm²");
+            JOptionPane.showMessageDialog(null, "Perímetro: " + ret.calcularPerimetro() + " cm" + "\nÁrea: " + ret.calcularArea() + " cm²");
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
 
     public static void main(String[] args) {

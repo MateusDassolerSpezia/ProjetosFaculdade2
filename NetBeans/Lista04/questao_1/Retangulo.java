@@ -4,49 +4,68 @@
  */
 package questao_1;
 
-
-
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class Retangulo {
+
     private int altura;
     private int comprimento;
-    
-    public Retangulo() throws IllegalArgumentException {
-        setAltura(0);
-        setComprimento(0);
+
+    /**
+     * cria uma instância de um retângulo vazio
+     */
+    public Retangulo() {
+
     }
-    public Retangulo(int comprimento, int altura) throws IllegalArgumentException {
-        setComprimento(comprimento);
+
+    /**
+     * Cria uma instância de um retângulo com valores definidos
+     * @param comprimento valor da altura do retângulo
+     * @param altura valor do comprimento do retângulo
+     * @throws IllegalArgumentException valores não podem ser negativos, nem 0
+     */
+    public Retangulo(int altura, int comprimento) throws IllegalArgumentException {
         setAltura(altura);
+        setComprimento(comprimento);
     }
-    
+
     public void setAltura(int altura) {
         if (altura <= 0) {
-            throw new IllegalArgumentException("Valor incorreto para a altura: " + getAltura());
+            throw new IllegalArgumentException("Valor incorreto para a altura: " + altura);
         }
         this.altura = altura;
     }
+
     public int getAltura() {
         return altura;
     }
-    
-    public int getComprimento() {
-        return comprimento;
-    }
+
     public void setComprimento(int comprimento) {
         if (comprimento <= 0) {
-            throw new IllegalArgumentException("Valor incorreto para o comprimento: " + getComprimento());
+            throw new IllegalArgumentException("Valor incorreto para o comprimento: " + comprimento);
         }
         this.comprimento = comprimento;
     }
-    
-    public int calcularPerimetro() {
-        return (2 * comprimento) + (2 * altura);
+
+    public int getComprimento() {
+        return comprimento;
     }
+
+    /**
+     * Calcula o perímetro do retângulo
+     * @return perímetro
+     */
+    public int calcularPerimetro() {
+        return (2 * altura) + (2 * comprimento);
+    }
+
+    /**
+     * Calcula a área do retângulo
+     * @return área
+     */
     public int calcularArea() {
-        return comprimento * altura;
+        return altura * comprimento;
     }
 }

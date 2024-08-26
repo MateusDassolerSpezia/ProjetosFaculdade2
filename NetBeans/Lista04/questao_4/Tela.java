@@ -5,13 +5,11 @@
 package questao_4;
 
 import javax.swing.JOptionPane;
-//import questao_3.Retangulo3;
-
-
+import questao_1.Retangulo;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class Tela extends javax.swing.JFrame {
 
@@ -20,7 +18,6 @@ public class Tela extends javax.swing.JFrame {
      */
     public Tela() {
         initComponents();
-        Retangulo4 ret = new Retangulo4();
     }
 
     /**
@@ -32,106 +29,125 @@ public class Tela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jtfAltura = new javax.swing.JTextField();
         jtfComprimento = new javax.swing.JTextField();
-        jbtCalcular = new javax.swing.JButton();
-        jbtLimpar = new javax.swing.JButton();
+        jbtCalcular2 = new javax.swing.JButton();
+        jbtLimpar2 = new javax.swing.JButton();
         jlbCalcularPerimetro = new javax.swing.JLabel();
         jlbCalcularArea = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Altura:");
+        jLabel5.setText("Comprimento:");
 
-        jLabel2.setText("Comprimento:");
+        jtfAltura.setPreferredSize(new java.awt.Dimension(80, 22));
 
-        jbtCalcular.setText("Calcular");
-        jbtCalcular.addActionListener(new java.awt.event.ActionListener() {
+        jtfComprimento.setPreferredSize(new java.awt.Dimension(80, 22));
+
+        jbtCalcular2.setText("Calcular");
+        jbtCalcular2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtCalcularActionPerformed(evt);
+                jbtCalcular2ActionPerformed(evt);
             }
         });
 
-        jbtLimpar.setText("Limpar");
-        jbtLimpar.addActionListener(new java.awt.event.ActionListener() {
+        jbtLimpar2.setText("Limpar");
+        jbtLimpar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtLimparActionPerformed(evt);
+                jbtLimpar2ActionPerformed(evt);
             }
         });
 
-        jlbCalcularPerimetro.setText("Perímetro:");
+        jlbCalcularPerimetro.setText("...");
 
-        jlbCalcularArea.setText("Área:");
+        jlbCalcularArea.setText("...");
+
+        jLabel6.setText("Altura:");
+
+        jLabel1.setText("Perímetro:");
+
+        jLabel2.setText("Área:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jtfAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbtCalcular))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfComprimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbtLimpar)))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jtfComprimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbtCalcular2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbtLimpar2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlbCalcularArea)
                     .addComponent(jlbCalcularPerimetro))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(114, 114, 114)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(jLabel6)
                     .addComponent(jtfAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtCalcular)
-                    .addComponent(jlbCalcularPerimetro))
+                    .addComponent(jbtCalcular2)
+                    .addComponent(jlbCalcularPerimetro)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jlbCalcularArea))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jtfComprimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtLimpar))))
-                .addContainerGap(185, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(jtfComprimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtLimpar2))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jlbCalcularArea)
+                        .addComponent(jLabel2)))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbtCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCalcularActionPerformed
-        int comprimento = Integer.parseInt(jtfComprimento.getText());
-        int altura = Integer.parseInt(jtfAltura.getText());
-        Retangulo4 ret = new Retangulo4(comprimento, altura);
-        
-        jlbCalcularPerimetro.setText("Perímetro: " + ret.calcularPerimetro());
-        jlbCalcularArea.setText("Área: " + ret.calcularArea());
+    private void jbtCalcular2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCalcular2ActionPerformed
+        try {
+            int comprimento = Integer.parseInt(jtfComprimento.getText());
+            int altura = Integer.parseInt(jtfAltura.getText());
+            Retangulo ret = new Retangulo(comprimento, altura);
 
-        //JOptionPane.showMessageDialog(null, "Perímetro: " + ret.calcularPerimetro() + " cm" + "\nÁrea: " + ret.calcularArea() + " cm²");
-    }//GEN-LAST:event_jbtCalcularActionPerformed
+            jlbCalcularPerimetro.setText(String.valueOf(ret.calcularPerimetro()));
+            jlbCalcularArea.setText(String.valueOf(ret.calcularArea()));
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+            jbtLimpar2ActionPerformed(evt);
+        }
 
-    private void jbtLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtLimparActionPerformed
-        jtfComprimento = null;
-        jtfAltura = null;
-        jlbCalcularPerimetro = null;
-        jlbCalcularArea = null;
-    }//GEN-LAST:event_jbtLimparActionPerformed
+    }//GEN-LAST:event_jbtCalcular2ActionPerformed
+
+    private void jbtLimpar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtLimpar2ActionPerformed
+        jtfComprimento.setText("");
+        jtfAltura.setText("");
+        jlbCalcularPerimetro.setText("");
+        jlbCalcularArea.setText("");
+    }//GEN-LAST:event_jbtLimpar2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,13 +183,14 @@ public class Tela extends javax.swing.JFrame {
             }
         });
     }
-    //private Retangulo4 ret;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JButton jbtCalcular;
-    private javax.swing.JButton jbtLimpar;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton jbtCalcular2;
+    private javax.swing.JButton jbtLimpar2;
     private javax.swing.JLabel jlbCalcularArea;
     private javax.swing.JLabel jlbCalcularPerimetro;
     private javax.swing.JTextField jtfAltura;
