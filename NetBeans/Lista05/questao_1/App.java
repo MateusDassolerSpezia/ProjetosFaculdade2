@@ -4,12 +4,26 @@
  */
 package questao_1;
 
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author mdspezia
+ * @author Mateus
  */
 public class App {
     public App() {
+        
+        int x = Integer.parseInt(JOptionPane.showInputDialog("X: "));
+        int y = Integer.parseInt(JOptionPane.showInputDialog("Y: "));
+        Ponto p = new Ponto(x, y);
+        
+        JOptionPane.showMessageDialog(null, p.identificarQuadrante() + " quadrante");
+        if (p.estaIncidindoSobreX() == true) {
+        JOptionPane.showMessageDialog(null, "Incide sobre o eixo X");
+        } 
+        if (p.estaIncidindoSobreY()) {
+        JOptionPane.showMessageDialog(null, "Incide sobre o eixo Y");
+        }
         
     }
     public static void main(String[] args) {

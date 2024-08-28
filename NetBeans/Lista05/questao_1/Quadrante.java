@@ -6,7 +6,7 @@ package questao_1;
 
 /**
  *
- * @author mdspezia
+ * @author Mateus
  */
 public enum Quadrante {
     NENHUM, PRIMEIRO, SEGUNDO, TERCEIRO, QUARTO
