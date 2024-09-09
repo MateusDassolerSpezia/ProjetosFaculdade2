@@ -9,11 +9,10 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class App {
-
-    public App() {
+     public App() {
         boolean certo = false;
         do {
             try {
