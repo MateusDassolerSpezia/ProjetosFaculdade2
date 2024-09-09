@@ -19,7 +19,7 @@ public class Principal {
         System.out.println("Subtrair = " + c1.getResultado());
         c1.dividir();
         System.out.println("Dividir = " + c1.getResultado());
-        System.out.println("Multiplicar = " + c1.multiplicar());
+        System.out.println("Multiplicar = " + c1.multiplicar(5, 2));
     }
     public static void main(String[] args) {
         new Principal();
