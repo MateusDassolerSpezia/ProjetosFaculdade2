@@ -33,6 +33,9 @@ public class FuncionarioTest {
     @Test
     public void faixa1() {
         f.setSalario(850);
+        /*if (f.identificarFaixaIrpf() == FaixaIrpf.PRIMEIRA) {
+            System.out.println("SIM");
+        }*/
         assertEquals(FaixaIrpf.PRIMEIRA, f.identificarFaixaIrpf());
     }
 
