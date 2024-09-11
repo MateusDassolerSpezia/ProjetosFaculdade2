@@ -24,6 +24,7 @@ public class App {
                 Funcionario imposto = new Funcionario(nome, salario);
 
                 JOptionPane.showMessageDialog(null, "O salario esta na " + imposto.identificarFaixaIrpf() + " faixa" + "\nValor de imposto de renda a ser pago: R$ " + df.format(imposto.calcularIrpf()));
+                certo = true;
             } catch (IllegalArgumentException e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }

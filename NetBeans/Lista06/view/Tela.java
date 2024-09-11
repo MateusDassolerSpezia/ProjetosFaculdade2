@@ -6,12 +6,11 @@ package view;
 
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
-import model.FaixaIrpf;
 import model.Funcionario;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class Tela extends javax.swing.JFrame {
 
@@ -31,19 +30,19 @@ public class Tela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jlbFaixa = new javax.swing.JLabel();
-        jlbImposto = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jtfSalario = new javax.swing.JTextField();
         jbtAvaliar = new javax.swing.JButton();
+        jlbFaixa = new javax.swing.JLabel();
+        jlbImposto = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jtfNome = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cálcula de IRPF");
 
-        jlbFaixa.setText("Faixa salarial");
-
-        jlbImposto.setText("Imposto");
-
-        jLabel1.setText("Salário");
+        jLabel1.setText("Salário:");
 
         jtfSalario.setPreferredSize(new java.awt.Dimension(80, 22));
 
@@ -54,66 +53,92 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
+        jlbFaixa.setText("...");
+
+        jlbImposto.setText("O imposto a pagar é de R$ ...");
+
+        jLabel2.setText("Nome:");
+
+        jtfNome.setPreferredSize(new java.awt.Dimension(80, 22));
+
+        jLabel3.setText("O salário está na");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlbImposto)
-                    .addComponent(jlbFaixa)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jbtAvaliar)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jtfSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(236, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jlbFaixa))
+                    .addComponent(jbtAvaliar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtfSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlbImposto))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jtfSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(jbtAvaliar)
-                .addGap(39, 39, 39)
-                .addComponent(jlbFaixa)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlbFaixa)
+                    .addComponent(jLabel3))
+                .addGap(19, 19, 19)
                 .addComponent(jlbImposto)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addGap(79, 79, 79))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Botão que calcula o IRPF e apresenta o imposto a pagar e a faixa
+     * @param evt clique do botão
+     */
     private void jbtAvaliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAvaliarActionPerformed
         DecimalFormat df = new DecimalFormat("0.00");
         try {
-            String nome = "a";
+            String nome = jtfNome.getText();
             double salario = Double.parseDouble(jtfSalario.getText());
 
             Funcionario imposto = new Funcionario(nome, salario);
 
                 switch (imposto.identificarFaixaIrpf()) {
                     case PRIMEIRA:
-                        jlbFaixa.setText("O salário está na 1ª faixa");
+                        jlbFaixa.setText("1ª faixa");
                         break;
                     case SEGUNDA:
-                        jlbFaixa.setText("O salário está na 2ª faixa");
+                        jlbFaixa.setText("2ª faixa");
                         break;
                     case TERCEIRA:
-                        jlbFaixa.setText("O salário está na 3ª faixa");
+                        jlbFaixa.setText("3ª faixa");
                         break;
                     case QUARTA:
-                        jlbFaixa.setText("O salário está na 4ª faixa");
+                        jlbFaixa.setText("4ª faixa");
                         break;
                     case QUINTA:
-                        jlbFaixa.setText("O salário está na 5ª faixa");
+                        jlbFaixa.setText("5ª faixa");
                         break;
                     default:
                         break;
@@ -164,9 +189,12 @@ public class Tela extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton jbtAvaliar;
     private javax.swing.JLabel jlbFaixa;
     private javax.swing.JLabel jlbImposto;
+    private javax.swing.JTextField jtfNome;
     private javax.swing.JTextField jtfSalario;
     // End of variables declaration//GEN-END:variables
 }
