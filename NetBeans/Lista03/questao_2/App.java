@@ -33,7 +33,7 @@ public class App {
 
         String mensagem = "";
         for (int i = 0; i < 5; i++) {
-            mensagem += funcionarios[i].getNome() + ": Salário = R$ " + funcionarios[i].getSalario() + "\nValor de imposto de renda a ser pago: R$ " + df.format(funcionarios[i].calcularIrpf()) + "\n";
+            mensagem += funcionarios[i].getNome() + ": Salário = R$ " + df.format(funcionarios[i].getSalario()) + "\nValor de imposto de renda a ser pago: R$ " + df.format(funcionarios[i].calcularIrpf()) + "\n";
 
         }
         JOptionPane.showMessageDialog(null, mensagem);
