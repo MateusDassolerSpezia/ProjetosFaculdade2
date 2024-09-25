@@ -16,6 +16,7 @@ public class Professor extends Pessoa {
     
     public Professor(String nome, int cpf, Date dataNascimento, int codigo) {
         super(nome, cpf, dataNascimento);
+        setCodigo(codigo);
     }
 
     public int getCodigo() {

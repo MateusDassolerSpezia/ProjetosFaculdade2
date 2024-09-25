@@ -15,10 +15,10 @@ import javax.swing.JOptionPane;
  */
 public class PrincipalPessoa {
     public PrincipalPessoa() {
-        Aluno a1 = new Aluno(1, "Ana", 123456789, new Date());
-        Aluno a2 = new Aluno(2, "Bruno", 987654321, new Date());
+        Aluno a1 = new Aluno(1, "Ana", 123456, new Date());
+        Aluno a2 = new Aluno(2, "Bruno", 987654, new Date());
         
-        Professor p1 = new Professor("Luciana", 111222333, new Date(), 12);
+        Professor p1 = new Professor("Luciana", 111222, new Date(), 12);
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         
