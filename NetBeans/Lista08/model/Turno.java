@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public enum Turno {
     MATUTINO, VESPERTINO, NOTURNO

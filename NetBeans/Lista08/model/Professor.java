@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class Professor {
     
@@ -25,6 +25,9 @@ public class Professor {
     }
 
     public void setNome(String nome) {
+        if (nome.isBlank()) {
+            throw new IllegalArgumentException("Nome não pode ser vazio");
+        }
         this.nome = nome;
     }
 
@@ -33,6 +36,9 @@ public class Professor {
     }
 
     public void setEmail(String email) {
+        if (email.isBlank()) {
+            throw new IllegalArgumentException("Email não pode ser vazio");
+        }
         this.email = email;
     }
 
@@ -41,8 +47,10 @@ public class Professor {
     }
 
     public void setTitulacao(Titulacao titulacao) {
+        if (titulacao == null) {
+            throw new IllegalArgumentException("Titulação não pode estar em branco");
+        }
         this.titulacao = titulacao;
     }
-    
     
 }

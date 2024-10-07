@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class Aluno {
     
@@ -14,6 +14,11 @@ public class Aluno {
     private String nome;
     private double notaEnem;
 
+    public Aluno(int matricula, String nome) {
+        setMatricula(matricula);
+        setNome(nome);
+    }
+    
     public Aluno(int matricula, String nome, double notaEnem) {
         setMatricula(matricula);
         setNome(nome);
@@ -25,6 +30,9 @@ public class Aluno {
     }
 
     public void setMatricula(int matricula) {
+        if (matricula <= 0) {
+            throw new IllegalArgumentException("Matrícula não pode ser menor que zero");
+        }
         this.matricula = matricula;
     }
 
@@ -33,6 +41,9 @@ public class Aluno {
     }
 
     public void setNome(String nome) {
+        if (nome.isBlank()) {
+            throw new IllegalArgumentException("Nome não pode ser vazio");
+        }
         this.nome = nome;
     }
 
@@ -41,8 +52,10 @@ public class Aluno {
     }
 
     public void setNotaEnem(double notaEnem) {
+        if (notaEnem < 0 || notaEnem > 1000) {
+            throw new IllegalArgumentException("Nota deve ser entre 0 e 1000");
+        }
         this.notaEnem = notaEnem;
     }
-    
     
 }
