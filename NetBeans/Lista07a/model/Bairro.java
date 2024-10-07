@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class Bairro {
     
@@ -39,6 +39,4 @@ public class Bairro {
         }
         this.coeficienteIptu = coeficienteIptu;
     }
-    
-    
 }
