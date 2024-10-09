@@ -16,10 +16,10 @@ public class App {
         ContaBancaria b = new ContaBancaria("1234", c, 0);
         ContaEspecial e = new ContaEspecial(100, "1234", c, 0);
         
-        e.depositar(20);
+        b.depositar(20);
         e.sacar(50);
         
-        JOptionPane.showMessageDialog(null, e.getLimiteCredito());
+        JOptionPane.showMessageDialog(null, e.getSaldo());
     }
     public static void main(String[] args) {
         new App();

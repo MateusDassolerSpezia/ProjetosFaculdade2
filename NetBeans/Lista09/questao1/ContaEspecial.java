@@ -33,7 +33,7 @@ public class ContaEspecial extends ContaBancaria{
         if (valor > this.limiteCredito) {
             throw new IllegalArgumentException("Sem limite para esse saque! Saldo: R$ " + getSaldo());
         }
-        limiteCredito -= valor;
+        //this.limiteCredito -= valor;
     }
      
 }
