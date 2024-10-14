@@ -30,7 +30,7 @@ public class ImovelTest {
     @BeforeAll
     public static void setUpClass() {
         b = new Bairro("Bairro", 2);
-        i = new Imovel(b, Finalidade.RESIDENCIAL, "a", 1);
+        i = new Imovel(b, Finalidade.RESIDENCIAL, "Rua", 1);
         df = new DecimalFormat("0.00");
         
     }
