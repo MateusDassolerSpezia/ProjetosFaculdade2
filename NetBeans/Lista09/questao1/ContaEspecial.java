@@ -6,9 +6,9 @@ package questao1;
 
 /**
  *
- * @author mdspezia
+ * @author Mateus
  */
-public class ContaEspecial extends ContaBancaria{
+public class ContaEspecial extends ContaBancaria  {
     
     private double limiteCredito;
 
@@ -27,13 +27,15 @@ public class ContaEspecial extends ContaBancaria{
     
     @Override
     public void sacar(double valor) {
+        double limiteTotal = limiteCredito + super.getSaldo();
         if (valor <= 0) {
             throw new IllegalArgumentException("Valor a ser sacado deve ser maior que 0!");
         }
-        if (valor > this.limiteCredito) {
-            throw new IllegalArgumentException("Sem limite para esse saque! Saldo: R$ " + getSaldo());
+        if (valor > limiteTotal) {
+            throw new IllegalArgumentException("Sem limite para esse saque! Saldo: R$ " + limiteTotal);
         }
-        //this.limiteCredito -= valor;
+        
+        limiteTotal = limiteTotal - (valor + limiteCredito);
+        super.setSaldo(limiteTotal);
     }
-     
 }
