@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author mdspezia
+ * @author Mateus
  */
 public enum Finalidade {
     RESIDENCIAL, COMERCIAL, INDUSTRIAL

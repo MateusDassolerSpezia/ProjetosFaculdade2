@@ -6,14 +6,14 @@ package model;
 
 /**
  *
- * @author mdspezia
+ * @author Mateus
  */
 public class Bairro {
     
     private String nome;
     private double coeficienteIptu;
 
-    public Bairro(String nome, double coeficienteIptu) {
+    public Bairro(String nome, double coeficienteIptu) throws IllegalArgumentException {
         setNome(nome);
         setCoeficienteIptu(coeficienteIptu);
     }
@@ -39,4 +39,6 @@ public class Bairro {
         }
         this.coeficienteIptu = coeficienteIptu;
     }
+    
+    
 }
