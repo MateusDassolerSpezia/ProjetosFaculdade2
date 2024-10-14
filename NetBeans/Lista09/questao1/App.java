@@ -8,25 +8,19 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class App {
-
     public App() {
-        try {
-            Cliente c = new Cliente("Mateus", "Aqui");
-            //ContaBancaria b = new ContaBancaria("1234", c, 0);
-            ContaEspecial e = new ContaEspecial(100, "1234", c, 0);
-
-            e.depositar(20);
-            e.sacar(120.01);
-
-            JOptionPane.showMessageDialog(null, e.getSaldo());
-        } catch (IllegalArgumentException ae) {
-            JOptionPane.showMessageDialog(null, ae.getMessage());
-        }
+        Cliente c = new Cliente("Mateus", "Aqui");
+        ContaBancaria b = new ContaBancaria("1234", c, 0);
+        ContaEspecial e = new ContaEspecial(100, "1234", c, 0);
+        
+        b.depositar(20);
+        e.sacar(50);
+        
+        JOptionPane.showMessageDialog(null, e.getSaldo());
     }
-
     public static void main(String[] args) {
         new App();
     }

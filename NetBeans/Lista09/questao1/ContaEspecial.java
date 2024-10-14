@@ -6,9 +6,9 @@ package questao1;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
-public class ContaEspecial extends ContaBancaria  {
+public class ContaEspecial extends ContaBancaria{
     
     private double limiteCredito;
 

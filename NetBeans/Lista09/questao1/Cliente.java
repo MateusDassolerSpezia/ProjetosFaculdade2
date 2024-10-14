@@ -6,10 +6,10 @@ package questao1;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class Cliente {
-
+    
     private String nome;
     private String endereco;
 
@@ -39,4 +39,6 @@ public class Cliente {
         }
         this.endereco = endereco;
     }
+    
+    
 }

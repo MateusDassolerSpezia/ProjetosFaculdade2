@@ -6,10 +6,10 @@ package questao1;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 public class ContaBancaria {
-    
+
     private String numero;
     private Cliente titular;
     private double saldo;
