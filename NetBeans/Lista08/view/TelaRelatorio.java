@@ -4,17 +4,26 @@
  */
 package view;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import model.Aluno;
+import model.Professor;
+import model.Turma;
+
 /**
  *
- * @author mdspezia
+ * @author lpa
  */
 public class TelaRelatorio extends javax.swing.JFrame {
 
+    private TelaPrincipal tela;
     /**
-     * Creates new form TelaRelatorio
+     * Creates new form Relatorio
      */
-    public TelaRelatorio() {
+    public TelaRelatorio(TelaPrincipal tela) {
+        this.tela = tela;
         initComponents();
+        
     }
 
     /**
@@ -26,73 +35,80 @@ public class TelaRelatorio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jtaTexto = new javax.swing.JTextArea();
+        jbtFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        jButton1.setText("Fechar");
+        jtaTexto.setColumns(20);
+        jtaTexto.setRows(5);
+        jtaTexto.setPreferredSize(new java.awt.Dimension(232, 250));
+        jScrollPane1.setViewportView(jtaTexto);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(jButton1)
-                .addContainerGap(175, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
-        );
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
-
-        jPanel2.setPreferredSize(new java.awt.Dimension(400, 250));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
+        jbtFechar.setText("Fechar");
+        jbtFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtFecharActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtFechar, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbtFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtFecharActionPerformed
+        //Para o texto não acumular, usar dessa forma:
+        this.dispose();
+        
+        //Para acumular o texto, usar dessa forma:
+        //this.setVisible(false);
+    }//GEN-LAST:event_jbtFecharActionPerformed
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
+        Turma turmaLocal = tela.turma;
+        
+        jtaTexto.append("Disciplina: " + turmaLocal.getDisciplina() + "\n");
+        jtaTexto.append("Turno: " + turmaLocal.getTurno().toString() + "\n");
+        jtaTexto.append("-------------------------\n");
+        
+        Professor p = turmaLocal.getProfessorTurma();        
+        jtaTexto.append("Professor: " + p.getNome() + "\n");
+        jtaTexto.append("Titulação: " + p.getTitulacao().toString() + "\n");
+        
+        jtaTexto.append("-------------------------\n");
+        
+        ArrayList<Aluno> alunos = turmaLocal.getAlunos();
+        jtaTexto.append("Total de alunos: " + alunos.size() + "\n");
+        for (Aluno a: alunos) {
+            jtaTexto.append(a.getNome() + " " + a.getMatricula() + 
+                    " - Nota ENEM: " + a.getNotaEnem() + "\n");
+        }
+        
+        Aluno melhorAluno = turmaLocal.obterAlunoMelhorNotaEnem();
+        jtaTexto.append("Aluno(a) com a melhor nota: " + 
+                melhorAluno.getNome() + " - (" + melhorAluno.getNotaEnem() + ")");
     }//GEN-LAST:event_formWindowOpened
 
-  
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        //formWindowOpened(evt);
+    }//GEN-LAST:event_formWindowActivated
+
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton jbtFechar;
+    private javax.swing.JTextArea jtaTexto;
     // End of variables declaration//GEN-END:variables
 }
