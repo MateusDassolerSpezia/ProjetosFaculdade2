@@ -93,5 +93,61 @@ FOREIGN KEY(cd_raca) REFERENCES raca(cd_raca),
 FOREIGN KEY(cd_cliente) REFERENCES cliente(cd_cliente)
 );
 
+CREATE TABLE nota_fiscal (
+nr_nota_fiscal INTEGER,
+dt_emissao DATE,
+vl_total DECIMAL(8,2),
+cd_cliente INTEGER,
+PRIMARY KEY(nr_nota_fiscal),
+FOREIGN KEY(cd_cliente) REFERENCES cliente(cd_cliente)
+);
+
+CREATE TABLE item_nota_fiscal (
+nr_nota_fiscal INTEGER,
+cd_produto INTEGER,
+qt_produto INTEGER,
+vl_produto DECIMAL(8,2),
+PRIMARY KEY(nr_nota_fiscal, cd_produto),
+FOREIGN KEY(nr_nota_fiscal) REFERENCES nota_fiscal(nr_nota_fiscal),
+FOREIGN KEY(cd_produto) REFERENCES produto(cd_produto)
+);
+
+CREATE TABLE prestador_servico (
+cd_prestador INTEGER,
+nm_prestador VARCHAR(50),
+nr_telefone VARCHAR(15),
+ds_email VARCHAR(50),
+cd_endereco INTEGER,
+PRIMARY KEY(cd_prestador),
+FOREIGN KEY(cd_endereco) REFERENCES endereco(cd_endereco)
+);
+
+CREATE TABLE servico_prestador (
+cd_prestador INTEGER,
+cd_servico INTEGER ,
+PRIMARY KEY (cd_servico, cd_prestador),
+FOREIGN KEY (cd_prestador) REFERENCES prestador_servico(cd_prestador),
+FOREIGN KEY (cd_servico) REFERENCES servico(cd_servico)
+);
+
+CREATE TABLE agendamento (
+nr_agendamento INTEGER,
+dt_agendamento DATE,
+hr_agendamento TIME,
+cd_prestador INTEGER,
+PRIMARY KEY (nr_agendamento),
+FOREIGN KEY (cd_prestador) REFERENCES prestador_servico(cd_prestador)
+);
+
+CREATE TABLE agendamento_servico (
+nr_agendamento INTEGER,
+cd_servico INTEGER,
+qt_servico INTEGER,
+vl_servico DECIMAL(6,2),
+PRIMARY KEY (nr_agendamento, cd_servico),
+FOREIGN KEY (nr_agendamento) REFERENCES agendamento(nr_agendamento),
+FOREIGN KEY (cd_servico) REFERENCES servico(cd_servico)
+);
+
 
 DESC servico
