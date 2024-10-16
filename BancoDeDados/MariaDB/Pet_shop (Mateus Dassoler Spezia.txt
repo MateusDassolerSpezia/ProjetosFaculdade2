@@ -53,7 +53,7 @@ cd_servico INTEGER REFERENCES servico(cd_cervico)
 CREATE TABLE raca (
 cd_raca INTEGER PRIMARY KEY,
 nm_raca VARCHAR(50),
-cd_especie INTEGER REFERENCES especie(cd_categoria)
+cd_especie INTEGER REFERENCES especie(cd_especie)
 );
 
 -- criando tabela cliente
