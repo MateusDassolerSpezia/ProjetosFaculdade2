@@ -15,7 +15,7 @@ public class Vendedor extends Funcionario {
     private double percentualComissao;
     private ArrayList<Venda> vendas;
 
-    public Vendedor(double percentualComissao, String nome, double salarioBase) throws IllegalArgumentException {
+    public Vendedor(double percentualComissao, String nome, double salarioBase) throws IllegalArgumentException, NomeVazioException {
         super(nome, salarioBase); //super é sempre a primeira linha do construtor
         setPercentualComissao(percentualComissao);
         vendas = new ArrayList();

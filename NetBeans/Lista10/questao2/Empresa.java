@@ -15,7 +15,7 @@ public class Empresa {
     private String nome;
     private ArrayList<Funcionario> funcionarios;
 
-    public Empresa(String nome) throws IllegalArgumentException {
+    public Empresa(String nome) throws NomeVazioException {
         setNome(nome);
         funcionarios = new ArrayList();
     }
@@ -24,9 +24,9 @@ public class Empresa {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome) throws NomeVazioException {
         if (nome.isBlank()) {
-            throw new IllegalArgumentException("Nome da empresa não pode ser vazio");
+            throw new NomeVazioException();
         }
         this.nome = nome;
     }
@@ -35,9 +35,9 @@ public class Empresa {
         return funcionarios;
     }
 
-    public void incluirFuncionario(Funcionario f) {
+    public void incluirFuncionario(Funcionario f) throws IllegalArgumentException {
         if (f == null) {
-            throw new IllegalArgumentException("Venda inválida");
+            throw new IllegalArgumentException("Funcionário deve ser informado");
         }
         if (buscar(f.getNome()) != null) {
             throw new IllegalArgumentException("Funcionário já existe");
@@ -54,7 +54,7 @@ public class Empresa {
          return null;
     }
     
-    public void removerFuncionario(String nome /*Funcionario f*/) {
+    public void removerFuncionario(String nome /*Funcionario f*/) throws IllegalArgumentException {
         /*for (Funcionario funcionario: funcionarios) {
             if(funcionario.getNome().equalsIgnoreCase(f.getNome())) {
                 funcionarios.remove(funcionario);

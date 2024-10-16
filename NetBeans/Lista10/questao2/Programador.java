@@ -14,7 +14,7 @@ public class Programador extends Funcionario {
 
     private ArrayList<String> linguagens;
 
-    public Programador(String nome, double salarioBase) {
+    public Programador(String nome, double salarioBase) throws IllegalArgumentException, NomeVazioException {
         super(nome, salarioBase); //super é sempre a primeira linha do construtor
         linguagens = new ArrayList();
     }
@@ -23,7 +23,7 @@ public class Programador extends Funcionario {
         return linguagens;
     }
 
-    public void incluirLinguagem(String linguagem) {
+    public void incluirLinguagem(String linguagem) throws IllegalArgumentException {
         if (linguagem.isBlank()) {
             throw new IllegalArgumentException("Deve ser informada uma linguagem de programação");
         }
@@ -42,7 +42,7 @@ public class Programador extends Funcionario {
         return null;
     }
 
-    public void removerLinguagem(String linguagem) {
+    public void removerLinguagem(String linguagem) throws IllegalArgumentException {
         String removerLinguagem = buscar(linguagem);
         if (removerLinguagem == null) {
             throw new IllegalArgumentException("Linguagem deve ser informada");

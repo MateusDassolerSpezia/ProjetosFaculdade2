@@ -13,7 +13,7 @@ public class Funcionario {
     private String nome;
     private double salarioBase;
 
-    public Funcionario(String nome, double salarioBase) throws IllegalArgumentException {
+    public Funcionario(String nome, double salarioBase) throws IllegalArgumentException, NomeVazioException {
         setNome(nome);
         setSalarioBase(salarioBase);
     }
@@ -22,9 +22,9 @@ public class Funcionario {
         return nome;
     }
 
-    public void setNome(String nome) throws IllegalArgumentException {
+    public void setNome(String nome) throws IllegalArgumentException, NomeVazioException {
         if (nome.isBlank()) {
-            throw new IllegalArgumentException("Nome não pode ser vazio");
+            throw new NomeVazioException();
         }
         this.nome = nome;
     }
