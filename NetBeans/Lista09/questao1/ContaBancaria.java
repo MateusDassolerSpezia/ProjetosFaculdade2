@@ -4,20 +4,25 @@
  */
 package questao1;
 
+
+import java.util.ArrayList;
+
 /**
  *
- * @author mdspezia
+ * @author Mateus
  */
 public class ContaBancaria {
-
+    
     private String numero;
     private Cliente titular;
     private double saldo;
+    private ArrayList<Movimento> movimentos;
 
     public ContaBancaria(String numero, Cliente titular, double saldo) {
         setNumero(numero);
         setTitular(titular);
         setSaldo(saldo);
+        movimentos = new ArrayList();
     }
 
     public String getNumero() {
@@ -57,7 +62,7 @@ public class ContaBancaria {
         }
         if (valor > this.saldo) {
             throw new IllegalArgumentException("Sem limite para esse saque! Saldo: R$ " + getSaldo());
-        }
+        } 
         this.saldo -= valor;
     }
 
@@ -68,4 +73,14 @@ public class ContaBancaria {
         this.sacar(valor);
         contaDestino.depositar(valor);
     }
+
+    public ArrayList<Movimento> getMovimentos() {
+        return movimentos;
+    }
+    
+    protected void incluirMovimento(Movimento m) {
+        movimentos.add(m);
+    }
+    
+    
 }
