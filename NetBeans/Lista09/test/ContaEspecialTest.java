@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import questao1.Cliente;
 import questao1.ContaEspecial;
+import questao1.Movimento;
+import questao1.TipoMovimento;
 
 /**
  *
@@ -23,11 +25,13 @@ public class ContaEspecialTest {
     private static ContaEspecial ce;
     private static Cliente c;
     private static DecimalFormat df;
+    private static Movimento m;
     
     @BeforeAll
     public static void setUpClass() {
         ce = new ContaEspecial(0, "1234", c, 0);
         df = new DecimalFormat("0.00");
+        m = new Movimento(0, TipoMovimento.DEBITO);
     }
     
     @Test
@@ -51,5 +55,11 @@ public class ContaEspecialTest {
         ce.setLimiteCredito(100);
         ce.depositar(20);
         ce.sacar(120.01);
+    }
+    
+    @Test
+    public void caso4() {
+        ce.depositar(1000);
+        ce.sacar(250);
     }
 }
