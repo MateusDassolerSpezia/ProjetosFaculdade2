@@ -14,8 +14,7 @@ import javax.swing.JOptionPane;
 public class App {
 
     public App() {
-        ArrayList<Pagavel> contas;
-        Contas c = new Contas();
+        ArrayList<Pagavel> contas = new ArrayList();
         Pagavel conta1;
         //Pagavel conta2;
         //Pagavel conta3;
