@@ -41,13 +41,14 @@ public class Comanda {
         for (Item i : itens) {
             if (tipoBuffet == TipoBuffet.LIVRE && i.getTipoItem().equalsIgnoreCase("Couvert") && i.getTipoItem().equalsIgnoreCase("Bebida")) {
                 valorLivre += i.getValor();
-                return valorLivre;
             } else {
                 valorQuilo += i.getValor();
-                return valorQuilo;
             }
         }
-        return 0;
+        if (tipoBuffet == TipoBuffet.LIVRE) {
+            return valorLivre;
+        }
+        return valorQuilo;
     }
 
     public void incluirItem(Item item) throws IllegalArgumentException {

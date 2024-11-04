@@ -10,8 +10,8 @@ package model;
  */
 public class Couvert extends Item {
 
-    public Couvert(String nome, float valor, String tipoItem) {
-        super(nome, valor, tipoItem);
+    public Couvert(String nome, float valor) {
+        super(nome, valor, "Couvert");
     }
     
     @Override

@@ -11,8 +11,8 @@ package model;
  */
 public class Bebida extends Item {
 
-    public Bebida(String nome, float valor, String tipoItem) {
-        super(nome, valor, tipoItem);
+    public Bebida(String nome, float valor) {
+        super(nome, valor, "Bebida");
     }
 
     @Override

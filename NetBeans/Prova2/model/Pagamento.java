@@ -28,7 +28,7 @@ public class Pagamento {
     }
 
     public float calcularTotalComanda() {
-        return calcularDesconto();
+        return comanda.calcularValorComanda() - calcularDesconto();
     }
 
     public void pagar(float valor) throws IllegalArgumentException {
@@ -39,8 +39,8 @@ public class Pagamento {
 
     public float calcularDesconto() {
         if (comanda.calcularValorComanda() > 50) {
-            return comanda.calcularValorComanda() - (comanda.calcularValorComanda() * 0.05f);
+            return (comanda.calcularValorComanda() * 0.05f);
         }
-        return comanda.calcularValorComanda();
+        return 0;
     }
 }
