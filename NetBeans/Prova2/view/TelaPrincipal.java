@@ -4,11 +4,21 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import model.Bebida;
+import model.Comanda;
+import model.Comida;
+import model.Couvert;
+import model.Item;
+import model.TipoBuffet;
+
 /**
  *
  * @author mdspezia
  */
 public class TelaPrincipal extends javax.swing.JFrame {
+
+    protected Comanda comanda;
 
     /**
      * Creates new form TelaPrincipal
@@ -28,146 +38,190 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jtfBebida = new javax.swing.JTextField();
+        jbtAddItem = new javax.swing.JButton();
+        jbtDetalhes = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jtfValorCouvert = new javax.swing.JTextField();
+        jtfValorComida = new javax.swing.JTextField();
+        jtfValorBebida = new javax.swing.JTextField();
+        jbtFinalizarComanda = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jbtRemoverItem = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jtfRemoverItem = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jButton4 = new javax.swing.JButton();
+        jrbLivre = new javax.swing.JRadioButton();
+        jrbQuilo = new javax.swing.JRadioButton();
+        jbtAddTpBuffet = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Itens"));
+        jPanel1.setPreferredSize(new java.awt.Dimension(480, 290));
 
-        jButton2.setText("Incluir itens");
+        jtfBebida.setEnabled(false);
+        jtfBebida.setPreferredSize(new java.awt.Dimension(80, 22));
 
-        jButton3.setText("Detalhes");
+        jbtAddItem.setText("Incluir itens");
+        jbtAddItem.setEnabled(false);
+        jbtAddItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtAddItemActionPerformed(evt);
+            }
+        });
 
-        jLabel5.setText("Valor: ");
+        jbtDetalhes.setText("Detalhes da comanda");
+        jbtDetalhes.setEnabled(false);
+        jbtDetalhes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtDetalhesActionPerformed(evt);
+            }
+        });
 
-        jLabel6.setText("Valor: ");
+        jLabel5.setText("Valor couvert: R$");
 
-        jLabel7.setText("Valor: ");
+        jLabel6.setText("Valor comida: R$");
 
-        jButton1.setText("Finalizar comanda");
+        jLabel7.setText("Valor: R$");
 
-        jLabel2.setText("Couvert:");
+        jtfValorCouvert.setEnabled(false);
+        jtfValorCouvert.setPreferredSize(new java.awt.Dimension(80, 22));
 
-        jLabel3.setText("Comida:");
+        jtfValorComida.setEnabled(false);
+        jtfValorComida.setPreferredSize(new java.awt.Dimension(80, 22));
+
+        jtfValorBebida.setEnabled(false);
+        jtfValorBebida.setPreferredSize(new java.awt.Dimension(80, 22));
+
+        jbtFinalizarComanda.setText("Finalizar comanda");
+        jbtFinalizarComanda.setEnabled(false);
+        jbtFinalizarComanda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtFinalizarComandaActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Bebida:");
+
+        jbtRemoverItem.setText("Remover item");
+        jbtRemoverItem.setEnabled(false);
+        jbtRemoverItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtRemoverItemActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Remover:");
+
+        jtfRemoverItem.setEnabled(false);
+        jtfRemoverItem.setPreferredSize(new java.awt.Dimension(80, 22));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jtfRemoverItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jtfValorComida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jtfBebida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jtfValorBebida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 36, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jbtRemoverItem))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jbtAddItem)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbtFinalizarComanda))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtfValorCouvert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
-                            .addComponent(jButton3)
-                            .addGap(32, 32, 32))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(0, 0, Short.MAX_VALUE)))
-                    .addContainerGap()))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(133, 133, 133)
+                .addComponent(jbtDetalhes)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jbtAddItem)
+                            .addComponent(jbtFinalizarComanda)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jtfValorCouvert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jtfValorComida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(88, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(17, 17, 17)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel7)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3))
-                    .addContainerGap()))
+                    .addComponent(jLabel4)
+                    .addComponent(jtfBebida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jtfValorBebida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jbtRemoverItem)
+                    .addComponent(jtfRemoverItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(jbtDetalhes)
+                .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_START);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de buffet"));
 
         jLabel1.setText("Tipo de buffet:");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Livre");
+        buttonGroup1.add(jrbLivre);
+        jrbLivre.setText("Livre");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Quilo");
+        buttonGroup1.add(jrbQuilo);
+        jrbQuilo.setText("Quilo");
 
-        jButton4.setText("Incluir itens");
+        jbtAddTpBuffet.setText("OK");
+        jbtAddTpBuffet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtAddTpBuffetActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -177,11 +231,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton1)
+                .addComponent(jrbLivre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(jrbQuilo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
+                .addComponent(jbtAddTpBuffet)
                 .addGap(32, 32, 32))
         );
         jPanel2Layout.setVerticalGroup(
@@ -190,16 +244,99 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jButton4))
+                    .addComponent(jrbLivre)
+                    .addComponent(jrbQuilo)
+                    .addComponent(jbtAddTpBuffet))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private TipoBuffet getTipoBuffet() {
+        TipoBuffet tipo = null;
+        if (jrbQuilo.isSelected()) {
+            tipo = TipoBuffet.QUILO;
+        } else if (jrbLivre.isSelected()) {
+            tipo = TipoBuffet.LIVRE;
+        }
+        return tipo;
+    }
+
+    private void jbtAddTpBuffetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAddTpBuffetActionPerformed
+        comanda = new Comanda(getTipoBuffet());
+        if (jrbQuilo.isSelected()) {
+            jtfValorComida.setEnabled(true);
+            jtfValorCouvert.setEnabled(true);
+            jtfBebida.setEnabled(true);
+            jtfValorBebida.setEnabled(true);
+            jtfRemoverItem.setEnabled(true);
+            jbtAddItem.setEnabled(true);
+            jbtDetalhes.setEnabled(true);
+            jbtFinalizarComanda.setEnabled(true);
+            jbtRemoverItem.setEnabled(true);
+        } else if (jrbLivre.isSelected()) {
+            jtfValorComida.setEnabled(false);
+            jtfValorCouvert.setEnabled(true);
+            jtfBebida.setEnabled(true);
+            jtfValorBebida.setEnabled(true);
+            jtfRemoverItem.setEnabled(true);
+            jbtAddItem.setEnabled(true);
+            jbtDetalhes.setEnabled(true);
+            jbtFinalizarComanda.setEnabled(true);
+            jbtRemoverItem.setEnabled(true);
+        }
+    }//GEN-LAST:event_jbtAddTpBuffetActionPerformed
+
+    private void jbtAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAddItemActionPerformed
+        try {
+            if (jrbQuilo.isSelected()) {
+                Couvert couvert = new Couvert("Couvert", Float.parseFloat(jtfValorCouvert.getText()));
+                comanda.incluirItem(couvert);
+                Comida comida = new Comida("Quilo", Float.parseFloat(jtfValorComida.getText()));
+                comanda.incluirItem(comida);
+                Bebida bebida = new Bebida(jtfBebida.getText(), Float.parseFloat(jtfValorBebida.getText()));
+                comanda.incluirItem(bebida);
+
+            } else if (jrbLivre.isSelected()) {
+                Couvert couvert = new Couvert("Couvert", Float.parseFloat(jtfValorCouvert.getText()));
+                comanda.incluirItem(couvert);
+                Comida comida = new Comida("Livre", 30);
+                comanda.incluirItem(comida);
+                Bebida bebida = new Bebida(jtfBebida.getText(), Float.parseFloat(jtfValorBebida.getText()));
+                comanda.incluirItem(bebida);
+            }
+
+            jtfValorCouvert.setText("");
+            jtfValorComida.setText("");
+            jtfBebida.setText("");
+            jtfValorBebida.setText("");
+
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_jbtAddItemActionPerformed
+
+    private void jbtRemoverItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtRemoverItemActionPerformed
+        try {
+            comanda.removerItem(jtfRemoverItem.getText());
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_jbtRemoverItemActionPerformed
+
+    private void jbtFinalizarComandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtFinalizarComandaActionPerformed
+        TelaPagamento telaPagamento = new TelaPagamento(this);
+        telaPagamento.setVisible(true);
+    }//GEN-LAST:event_jbtFinalizarComandaActionPerformed
+
+    private void jbtDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtDetalhesActionPerformed
+        TelaDetalhes telaDetalhes = new TelaDetalhes(this);
+        telaDetalhes.setVisible(true);
+    }//GEN-LAST:event_jbtDetalhesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,26 +375,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JButton jbtAddItem;
+    private javax.swing.JButton jbtAddTpBuffet;
+    private javax.swing.JButton jbtDetalhes;
+    private javax.swing.JButton jbtFinalizarComanda;
+    private javax.swing.JButton jbtRemoverItem;
+    private javax.swing.JRadioButton jrbLivre;
+    private javax.swing.JRadioButton jrbQuilo;
+    private javax.swing.JTextField jtfBebida;
+    private javax.swing.JTextField jtfRemoverItem;
+    private javax.swing.JTextField jtfValorBebida;
+    private javax.swing.JTextField jtfValorComida;
+    private javax.swing.JTextField jtfValorCouvert;
     // End of variables declaration//GEN-END:variables
 }

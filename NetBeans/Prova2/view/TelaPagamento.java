@@ -4,16 +4,28 @@
  */
 package view;
 
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+import model.Comanda;
+import model.Dinheiro;
+import model.Pagamento;
+import model.TipoBuffet;
+
 /**
  *
  * @author mdspezia
  */
 public class TelaPagamento extends javax.swing.JFrame {
 
+    private TelaPrincipal telaP;
+    DecimalFormat df = new DecimalFormat("0.00");
+    
     /**
      * Creates new form TelaPagamento
      */
-    public TelaPagamento() {
+    public TelaPagamento(TelaPrincipal telaPrincipal) {
+        this.telaP = telaPrincipal;
+        //this.comanda = comanda;
         initComponents();
     }
 
@@ -32,22 +44,29 @@ public class TelaPagamento extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jbtTroco = new javax.swing.JButton();
+        jtfValorPagoDin = new javax.swing.JTextField();
+        jlbTotalPagarDin = new javax.swing.JLabel();
+        jlbDescontoDin = new javax.swing.JLabel();
+        jlbTroco = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        jrbDinheiro = new javax.swing.JRadioButton();
+        jrbOutro = new javax.swing.JRadioButton();
+        jbtPagamento = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jlbTotalPagarOutro = new javax.swing.JLabel();
+        jlbDescontoOutro = new javax.swing.JLabel();
+        jbtPagamentoOutro = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dinheiro"));
+        jPanel1.setEnabled(false);
 
-        jLabel2.setText("Valor pago:");
+        jLabel2.setText("Valor pago: R$");
 
         jLabel3.setText("Total pagar:");
 
@@ -55,7 +74,22 @@ public class TelaPagamento extends javax.swing.JFrame {
 
         jLabel5.setText("Troco:");
 
-        jButton2.setText("Calcular troco");
+        jbtTroco.setText("Calcular troco");
+        jbtTroco.setEnabled(false);
+        jbtTroco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtTrocoActionPerformed(evt);
+            }
+        });
+
+        jtfValorPagoDin.setEnabled(false);
+        jtfValorPagoDin.setPreferredSize(new java.awt.Dimension(80, 22));
+
+        jlbTotalPagarDin.setText("R$ ");
+
+        jlbDescontoDin.setText("R$");
+
+        jlbTroco.setText("R$");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,16 +103,25 @@ public class TelaPagamento extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel5))
+                                .addComponent(jtfValorPagoDin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addComponent(jlbTroco)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(46, 46, 46))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jlbDescontoDin))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jlbTotalPagarDin)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                        .addComponent(jbtTroco)
+                        .addGap(62, 62, 62))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,17 +129,25 @@ public class TelaPagamento extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfValorPagoDin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jlbTotalPagarDin))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4))
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jlbDescontoDin))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jbtTroco)
+                        .addGap(13, 13, 13)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jlbTroco))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -105,13 +156,18 @@ public class TelaPagamento extends javax.swing.JFrame {
 
         jLabel1.setText("Tipo de pagamento:");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Dinheiro");
+        buttonGroup1.add(jrbDinheiro);
+        jrbDinheiro.setText("Dinheiro");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Outro");
+        buttonGroup1.add(jrbOutro);
+        jrbOutro.setText("Outro");
 
-        jButton1.setText("Realizar pagamento");
+        jbtPagamento.setText("OK");
+        jbtPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtPagamentoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -121,12 +177,12 @@ public class TelaPagamento extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton1)
+                .addComponent(jrbDinheiro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addComponent(jrbOutro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(jbtPagamento)
+                .addGap(31, 31, 31))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,20 +190,34 @@ public class TelaPagamento extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jButton1))
+                    .addComponent(jrbDinheiro)
+                    .addComponent(jrbOutro)
+                    .addComponent(jbtPagamento))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Outro"));
+        jPanel3.setEnabled(false);
         jPanel3.setMinimumSize(new java.awt.Dimension(100, 150));
+        jPanel3.setPreferredSize(new java.awt.Dimension(408, 110));
 
         jLabel6.setText("Total pagar:");
 
         jLabel7.setText("Desconto:");
+
+        jlbTotalPagarOutro.setText("R$");
+
+        jlbDescontoOutro.setText("R$");
+
+        jbtPagamentoOutro.setText("Realizar Pagamento");
+        jbtPagamentoOutro.setEnabled(false);
+        jbtPagamentoOutro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtPagamentoOutroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -156,64 +226,99 @@ public class TelaPagamento extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
-                .addContainerGap(330, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jlbTotalPagarOutro))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlbDescontoOutro)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addComponent(jbtPagamentoOutro)
+                .addGap(46, 46, 46))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jlbTotalPagarOutro))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jlbDescontoOutro)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jbtPagamentoOutro)))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+
+    private void jbtPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtPagamentoActionPerformed
+        try {
+            if (jrbDinheiro.isSelected()) {
+                jtfValorPagoDin.setEnabled(true);
+                jbtTroco.setEnabled(true);
+                jPanel1.setEnabled(true);
+                jPanel3.setEnabled(false);
+
+                //dinheiro = new Dinheiro(comanda, Float.parseFloat(jtfValorPagoDin.getText()));
+                //jlbTotalPagarDin.setText("R$ " + dinheiro.calcularTotalComanda());
+                //jlbDescontoDin.setText("R$ " + dinheiro.calcularDesconto());
+            } else if (jrbOutro.isSelected()) {
+                jPanel3.setEnabled(true);
+                jbtPagamentoOutro.setEnabled(true);
+                jtfValorPagoDin.setEnabled(false);
+                jbtTroco.setEnabled(false);
+                jPanel1.setEnabled(false);
+
+                //jlbTotalPagarOutro.setText("R$ " + pagamento.calcularTotalComanda());
+                //jlbDescontoOutro.setText("R$ " + pagamento.calcularDesconto());
+            }
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_jbtPagamentoActionPerformed
+
+    private void jbtTrocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtTrocoActionPerformed
+        try {
+            Dinheiro dinheiro = new Dinheiro(telaP.comanda, Float.parseFloat(jtfValorPagoDin.getText()));
+            dinheiro.pagar(Float.parseFloat(jtfValorPagoDin.getText()));
+            jlbTotalPagarDin.setText("R$ " + df.format(dinheiro.calcularTotalComanda()));
+            jlbDescontoDin.setText("R$ " + df.format(dinheiro.calcularDesconto()));
+            jlbTroco.setText("R$ " + df.format(dinheiro.calcularTroco()));
+
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_jbtTrocoActionPerformed
+
+    private void jbtPagamentoOutroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtPagamentoOutroActionPerformed
+        try {
+            Pagamento pagamento = new Pagamento(telaP.comanda);
+            jlbTotalPagarOutro.setText("R$ " + df.format(pagamento.calcularTotalComanda()));
+            jlbDescontoOutro.setText("R$ " + df.format(pagamento.calcularDesconto()));
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_jbtPagamentoOutroActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPagamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPagamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPagamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPagamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaPagamento().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -224,8 +329,16 @@ public class TelaPagamento extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton jbtPagamento;
+    private javax.swing.JButton jbtPagamentoOutro;
+    private javax.swing.JButton jbtTroco;
+    private javax.swing.JLabel jlbDescontoDin;
+    private javax.swing.JLabel jlbDescontoOutro;
+    private javax.swing.JLabel jlbTotalPagarDin;
+    private javax.swing.JLabel jlbTotalPagarOutro;
+    private javax.swing.JLabel jlbTroco;
+    private javax.swing.JRadioButton jrbDinheiro;
+    private javax.swing.JRadioButton jrbOutro;
+    private javax.swing.JTextField jtfValorPagoDin;
     // End of variables declaration//GEN-END:variables
 }
