@@ -1,7 +1,7 @@
 -- utilizando o script de apoio
 
 -- 1. Listar todos os produtos com preço de venda acima de R$ 100,00.
-SELECT p.nm_produto, p.vl_venda
+SELECT p.nm_produto, p.vl_venda -- p.*
 FROM produto p
 WHERE p.vl_venda > 100;
 
