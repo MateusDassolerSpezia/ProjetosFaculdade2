@@ -10,7 +10,7 @@ package model;
  */
 public class Pagamento {
 
-    private Comanda comanda;
+    Comanda comanda;
 
     public Pagamento(Comanda comanda) throws IllegalArgumentException {
         setComanda(comanda);

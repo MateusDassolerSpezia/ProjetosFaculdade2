@@ -17,6 +17,6 @@ public class Bebida extends Item {
 
     @Override
     public String imprimirItem() {
-       return ("O valor da " + super.getNome() + " é R$ " + super.getValor()); 
+       return ("O valor do(a) " + super.getNome() + " é R$ " + super.getValor()); 
     }
 }

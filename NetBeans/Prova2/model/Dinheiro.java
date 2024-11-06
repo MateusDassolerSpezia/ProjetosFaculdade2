@@ -12,7 +12,7 @@ public class Dinheiro extends Pagamento {
     
     private float valorPago;
 
-    public Dinheiro(float valorPago, Comanda comanda) throws IllegalArgumentException {
+    public Dinheiro(Comanda comanda, float valorPago) throws IllegalArgumentException {
         super(comanda);
         setValorPago(valorPago);
     }
@@ -30,7 +30,7 @@ public class Dinheiro extends Pagamento {
     
     @Override
     public float calcularTotalComanda() {
-        return calcularDesconto();
+        return comanda.calcularValorComanda() - calcularDesconto();
     }
     
     @Override
@@ -42,12 +42,11 @@ public class Dinheiro extends Pagamento {
     
     @Override
     public float calcularDesconto() {
-        float descontoDinheiro = super.calcularTotalComanda() - (super.calcularTotalComanda() * 0.10f);
-        
-        return descontoDinheiro;
+        return comanda.calcularValorComanda() * 0.10f;
     }
     
     public float calcularTroco() {
-        return calcularTotalComanda() - valorPago;
+        
+        return valorPago - calcularTotalComanda();
     }
 }

@@ -36,19 +36,20 @@ public class Comanda {
     }
 
     public float calcularValorComanda() {
-        float valorQuilo = 0;
-        float valorLivre = 30;
-        for (Item i : itens) {
-            if (tipoBuffet == TipoBuffet.LIVRE && i.getTipoItem().equalsIgnoreCase("Couvert") && i.getTipoItem().equalsIgnoreCase("Bebida")) {
-                valorLivre += i.getValor();
-            } else {
-                valorQuilo += i.getValor();
+        float valor = 0;
+        if (tipoBuffet == TipoBuffet.LIVRE) {
+            valor += 30;
+            for (Item i : itens) {
+                if (i instanceof Bebida || i instanceof Couvert) {
+                    valor += i.getValor();
+                }
+            }
+        } else if (tipoBuffet == TipoBuffet.QUILO) {
+            for (Item i : itens) {
+                valor += i.getValor();
             }
         }
-        if (tipoBuffet == TipoBuffet.LIVRE) {
-            return valorLivre;
-        }
-        return valorQuilo;
+        return valor;
     }
 
     public void incluirItem(Item item) throws IllegalArgumentException {
@@ -58,12 +59,20 @@ public class Comanda {
         itens.add(item);
     }
 
-    public void removerItem(Item item) {
+    private Item buscar(String nome) {
         for (Item i : itens) {
-            if (i.getNome().equalsIgnoreCase(i.getNome()) && i.getTipoItem().equalsIgnoreCase(i.getTipoItem())) {
-                itens.remove(i);
-                break;
+            if (i.getNome().equalsIgnoreCase(nome)) {
+                return i;
             }
         }
+        return null;
+    }
+
+    public void removerItem(String nome) throws IllegalArgumentException {
+        Item itemRemover = buscar(nome);
+        if (itemRemover == null) {
+            throw new IllegalArgumentException("Item deve ser informado");
+        }
+        itens.remove(itemRemover);
     }
 }
