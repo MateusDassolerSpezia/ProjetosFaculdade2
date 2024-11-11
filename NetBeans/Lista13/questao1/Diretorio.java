@@ -16,52 +16,39 @@ public class Diretorio {
     private int tamanho;
 
     public Diretorio(String nomeDiretorio) throws Exception {
-        setNomeDiretorio(nomeDiretorio);
+        setDiretorio(nomeDiretorio);
         File diretorio = new File(nomeDiretorio);
         if (!diretorio.isDirectory()) {
-            throw new Exception("Diretório inexistente");
+            throw new Exception("Não é um diretório");
         }
-        
+        tamanho = 0;
+        tamanho = infoDiretorios(diretorio);
+        System.out.println(tamanho);
     }
 
-    public void setNomeDiretorio(String nomeDiretorio) throws Exception {
+    public void setDiretorio(String nomeDiretorio) throws Exception {
         if (nomeDiretorio.isBlank()) {
             throw new Exception("Nome deve ser informado");
         }
         this.nomeDiretorio = nomeDiretorio;
     }
 
-    public int informacoes(File diretorio) throws Exception {
-        
-        
-        //String info = "";
-        //File diretorio = new File(nomeDiretorio);
-        
-        //if (!diretorio.isDirectory()) {
-        //    throw new Exception("Diretório inexistente");
-        //}
-        //return info;
-
+    public int infoDiretorios(File diretorio) throws Exception {
         File[] conteudoDiretorio = diretorio.listFiles();
         for (File item : conteudoDiretorio) {
             if (item.isDirectory()) {
-                /*diretorio = item;
-                conteudoDiretorio = diretorio.listFiles();
-                for (File item2 : conteudoDiretorio) {
-                    if (item2.isDirectory()) {
-
-                    } else {
-                        tamanho += item2.length();
-                    }
-                }*/
                 System.out.println(item.getName());
-                informacoes(item);
+                infoDiretorios(item);
             } else {
                 System.out.println(item.getName());
                 tamanho += item.length();
             }
         }
+
         return tamanho;
     }
 
+    public static void main(String[] args) throws Exception {
+        new Diretorio("C:\\Users\\mdspezia\\Documents\\NetBeansProjects\\Lista10");
+    }
 }
