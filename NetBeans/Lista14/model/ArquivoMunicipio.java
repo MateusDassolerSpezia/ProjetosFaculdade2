@@ -29,7 +29,7 @@ public class ArquivoMunicipio {
                 maior.getPopulacao());
         
         Cidade menor = menorPopulacao();
-        System.out.println("Maior cidade: " + menor.getCidade() + " - " + 
+        System.out.println("Menor cidade: " + menor.getCidade() + " - " + 
                 menor.getPopulacao());
     }
 
