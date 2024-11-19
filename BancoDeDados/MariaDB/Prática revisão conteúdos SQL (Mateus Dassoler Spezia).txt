@@ -124,10 +124,37 @@ INSERT INTO emprestimo_exemplar VALUES(8, 8, '2024-11-22', '2024-11-17');
 INSERT INTO emprestimo_exemplar VALUES(9, 9, '2024-11-18', '2024-11-15');
 INSERT INTO emprestimo_exemplar VALUES(10, 10, '2024-12-03', NULL);
 
+UPDATE emprestimo_exemplar ee
+		SET ee.dt_prevista_devolucao = '2024-12-07'
+		WHERE ee.nr_emprestimo = 7;
+
 -- D) Listar todos os empréstimos com os respectivos usuários e títulos das obras.
+SELECT e.nr_emprestimo AS 'Nr do emprestimo'
+		,e.dt_emprestimo AS 'Data'
+		,u.nm_usuario AS 'Usuário'
+		,o.nm_titulo AS 'Obra'
+FROM emprestimo e, usuario u, obra o, exemplar ex, emprestimo_exemplar ee
+WHERE e.cd_usuario = u.cd_usuario AND o.cd_obra = ex.cd_obra AND ee.nr_exemplar = ex.nr_exemplar AND ee.nr_emprestimo = e.nr_emprestimo
+ORDER BY e.nr_emprestimo;
 
 -- E) Listar os títulos das obras e o nome dos usuários que ainda não devolveram os exemplares (dt_devolucao IS NULL).
+SELECT o.nm_titulo AS 'Obra'
+		,u.nm_usuario AS 'Usuário'
+		,ee.dt_prevista_devolucao AS 'Data prevista para devolução'
+		,ee.dt_devolucao AS 'Data da devolução'
+FROM obra o, usuario u, emprestimo e, exemplar ex, emprestimo_exemplar ee
+WHERE e.cd_usuario = u.cd_usuario AND o.cd_obra = ex.cd_obra AND ee.nr_exemplar = ex.nr_exemplar AND ee.nr_emprestimo = e.nr_emprestimo AND ee.dt_devolucao IS NULL;
 
 -- F) Exibir a lista de usuários e a quantidade de empréstimos que cada um pode realizar (nr_exemplares da tabela categoria).
+SELECT u.nm_usuario AS 'Usuário'
+		,c.ds_categoria 'Categoria'
+		,c.nr_exemplares AS 'Quantidade de emprestimos permitida'
+FROM usuario u, categoria c
+WHERE u.tp_categoria = c.tp_categoria;
 
 -- G) Listar as obras e os exemplares disponíveis.
+SELECT o.nm_titulo AS 'Obra'
+		,e.nr_exemplar AS 'Exemplar'
+FROM obra o, exemplar e
+WHERE o.cd_obra = e.cd_obra
+ORDER BY e.nr_exemplar;
