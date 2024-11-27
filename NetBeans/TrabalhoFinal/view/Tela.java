@@ -38,6 +38,8 @@ public class Tela extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
+        jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
+
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
