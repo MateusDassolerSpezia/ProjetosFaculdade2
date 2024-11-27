@@ -6,29 +6,37 @@ package model;
 
 /**
  *
- * @author Mateus
+ * @author mdspezia
  */
 import java.io.*;
 import java.nio.file.*;
+import java.util.ArrayList;
 
 public class ArquivoBinario {
 
+    //private Serializacao s;
+    
     // Salvar o arquivo com extensão .poo
-    public static void salvar(String caminho, String texto) throws IOException {
+    public void salvarArquivo(String caminho, TextoFormatado textoFormatado) throws IOException {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(caminho))) {
-            oos.writeObject(texto);
+            oos.writeObject(textoFormatado);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     // Carregar o arquivo .poo
-    public static String abrir(String caminho) throws IOException, ClassNotFoundException {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(caminho))) {
-            return (String) ois.readObject();
+    public TextoFormatado abrirArquivo(String caminho) throws IOException, ClassNotFoundException {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(caminho))) {
+            return (TextoFormatado) in.readObject();  // Retorna o objeto TextoFormatado
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
     // Verificar se o arquivo existe
-    public static boolean existeArquivo(String caminho) {
+    public boolean arquivoExiste(String caminho) {
         return Files.exists(Paths.get(caminho));
     }
 }

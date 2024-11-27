@@ -5,8 +5,6 @@
 package view;
 
 import javax.swing.JFileChooser;
-import model.ArquivoBinario;
-import model.EditorTexto;
 
 /**
  *
@@ -14,8 +12,6 @@ import model.EditorTexto;
  */
 public class BlocoNotas extends javax.swing.JFrame {
 
-    public EditorTexto editor;
-    public ArquivoBinario arquivo;
     /**
      * Creates new form BlocoNotas
      */
@@ -40,22 +36,16 @@ public class BlocoNotas extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Editor de Texto");
-        setBackground(new java.awt.Color(51, 51, 51));
 
-        jEditorPane1.setBackground(new java.awt.Color(51, 51, 51));
-        jEditorPane1.setForeground(new java.awt.Color(255, 255, 255));
         jEditorPane1.setPreferredSize(new java.awt.Dimension(574, 595));
         jScrollPane1.setViewportView(jEditorPane1);
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
-
-        jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
 
         jMenu1.setText("Arquivo");
 
@@ -77,14 +67,11 @@ public class BlocoNotas extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Estilo");
+        jMenu2.setText("Editar");
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Alinhar");
+        jMenu3.setText("Formatar");
         jMenuBar1.add(jMenu3);
-
-        jMenu5.setText("Alinhar");
-        jMenuBar1.add(jMenu5);
 
         jMenu4.setText("Sobre");
 
@@ -110,18 +97,15 @@ public class BlocoNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        editor.abrirArquivo();
-        
-        /*JFileChooser files = new JFileChooser();
+        JFileChooser files = new JFileChooser();
         files.setDialogType(JFileChooser.OPEN_DIALOG);
-        int result = files.showOpenDialog(null);*/
+        int result = files.showOpenDialog(null);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        editor.salvarArquivo();
-        /*JFileChooser files = new JFileChooser();
+        JFileChooser files = new JFileChooser();
         files.setDialogType(JFileChooser.SAVE_DIALOG);
-        int result = files.showSaveDialog(null);*/
+        int result = files.showSaveDialog(null);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
@@ -165,7 +149,6 @@ public class BlocoNotas extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
