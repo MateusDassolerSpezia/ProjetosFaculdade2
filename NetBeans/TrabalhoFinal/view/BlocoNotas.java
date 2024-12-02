@@ -4,23 +4,27 @@
  */
 package view;
 
-import javax.swing.JFileChooser;
 import model.ArquivoBinario;
-import model.EditorTexto;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
+
+import javax.swing.text.*;
 
 /**
  *
- * @author vinoneda
+ * @author Mateus
  */
 public class BlocoNotas extends javax.swing.JFrame {
 
-    public EditorTexto editor;
-    public ArquivoBinario arquivo;
-    /**
-     * Creates new form BlocoNotas
-     */
+    private ArquivoBinario arquivo;  // Use ArquivoBinario to handle file operations
+
     public BlocoNotas() {
         initComponents();
+        arquivo = new ArquivoBinario();
     }
 
     /**
@@ -32,71 +36,148 @@ public class BlocoNotas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jmiAbrir = new javax.swing.JMenuItem();
+        jmiSalvar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jmiFontePadrao = new javax.swing.JMenuItem();
+        jmiNegrito = new javax.swing.JMenuItem();
+        jmiItalico = new javax.swing.JMenuItem();
+        jmiSublinhado = new javax.swing.JMenuItem();
+        jmiCorTexto = new javax.swing.JMenuItem();
+        jmiMarcaTexto = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jmiAlinharEsquerda = new javax.swing.JMenuItem();
+        jmiAlinharCentro = new javax.swing.JMenuItem();
+        jmiAlinharDireita = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmiSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Editor de Texto");
         setBackground(new java.awt.Color(51, 51, 51));
 
-        jEditorPane1.setBackground(new java.awt.Color(51, 51, 51));
-        jEditorPane1.setForeground(new java.awt.Color(255, 255, 255));
-        jEditorPane1.setPreferredSize(new java.awt.Dimension(574, 595));
-        jScrollPane1.setViewportView(jEditorPane1);
+        jTextPane1.setPreferredSize(new java.awt.Dimension(600, 400));
+        jScrollPane2.setViewportView(jTextPane1);
 
-        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
-        jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuBar1.setBorderPainted(false);
 
         jMenu1.setText("Arquivo");
 
-        jMenuItem2.setText("Abrir...");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jmiAbrir.setText("Abrir");
+        jmiAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jmiAbrirActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(jmiAbrir);
 
-        jMenuItem3.setText("Salvar Como...");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jmiSalvar.setText("Salvar Como");
+        jmiSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jmiSalvarActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        jMenu1.add(jmiSalvar);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Estilo");
+
+        jmiFontePadrao.setText("Fonte Padrão");
+        jmiFontePadrao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiFontePadraoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiFontePadrao);
+
+        jmiNegrito.setText("Negrito");
+        jmiNegrito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiNegritoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiNegrito);
+
+        jmiItalico.setText("Itálico");
+        jmiItalico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiItalicoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiItalico);
+
+        jmiSublinhado.setText("Sublinhado");
+        jmiSublinhado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSublinhadoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiSublinhado);
+
+        jmiCorTexto.setText("Cor de Texto");
+        jmiCorTexto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCorTextoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiCorTexto);
+
+        jmiMarcaTexto.setText("Marca Texto");
+        jmiMarcaTexto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMarcaTextoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiMarcaTexto);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Alinhar");
-        jMenuBar1.add(jMenu3);
 
-        jMenu5.setText("Opções");
-        jMenuBar1.add(jMenu5);
-
-        jMenu4.setText("Sobre");
-
-        jMenuItem1.setText("Créditos");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jmiAlinharEsquerda.setText("Alinhar a Esquerda");
+        jmiAlinharEsquerda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jmiAlinharEsquerdaActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem1);
+        jMenu3.add(jmiAlinharEsquerda);
 
-        jMenuBar1.add(jMenu4);
+        jmiAlinharCentro.setText("Alinhar ao Centro");
+        jmiAlinharCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAlinharCentroActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmiAlinharCentro);
+
+        jmiAlinharDireita.setText("Alinhar à Direita");
+        jmiAlinharDireita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAlinharDireitaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmiAlinharDireita);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu5.setText("Sobre");
+
+        jmiSobre.setText("Créditos");
+        jmiSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSobreActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jmiSobre);
+
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -104,25 +185,182 @@ public class BlocoNotas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void alinharTexto(int alinhamento) {
+        StyledDocument doc = jTextPane1.getStyledDocument();
+        SimpleAttributeSet atributos = new SimpleAttributeSet();
+        StyleConstants.setAlignment(atributos, alinhamento);
+        doc.setParagraphAttributes(jTextPane1.getSelectionStart(), jTextPane1.getSelectionEnd() - jTextPane1.getSelectionStart(), atributos, false);
+    }
+
+    private void jmiAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAbrirActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Arquivos .poo", "poo"));
+        int resultado = fileChooser.showOpenDialog(this);
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File arquivoSelecionado = fileChooser.getSelectedFile();
+            try {
+                // Chama o método abrir com o JTextPane
+                arquivo.abrir(arquivoSelecionado.getAbsolutePath(), jTextPane1);
+            } catch (IOException | ClassNotFoundException e) {
+                JOptionPane.showMessageDialog(this, "Erro ao abrir o arquivo.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jmiAbrirActionPerformed
+
+    private void jmiSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSalvarActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Arquivos .poo", "poo"));
+
+        boolean salvando = true;
+        while (salvando) {
+            int resultado = fileChooser.showSaveDialog(this);
+
+            if (resultado == JFileChooser.APPROVE_OPTION) {
+                File arquivoSelecionado = fileChooser.getSelectedFile();
+
+                // Adiciona a extensão ".poo" caso não esteja presente
+                if (!arquivoSelecionado.getName().endsWith(".poo")) {
+                    arquivoSelecionado = new File(arquivoSelecionado.getAbsolutePath() + ".poo");
+                }
+
+                if (arquivo.existeArquivo(arquivoSelecionado.getAbsolutePath())) {
+                    int resposta = JOptionPane.showConfirmDialog(this, "Arquivo já existe. Deseja substituir?", "Confirmar Substituição", JOptionPane.YES_NO_CANCEL_OPTION);
+                    switch (resposta) {
+                        case JOptionPane.YES_OPTION:
+                            try {
+                                arquivo.salvar(arquivoSelecionado.getAbsolutePath(), jTextPane1);
+                                salvando = false; // Salvo com sucesso, encerra o loop
+                            } catch (IOException e) {
+                                JOptionPane.showMessageDialog(this, "Erro ao salvar o arquivo.", "Erro", JOptionPane.ERROR_MESSAGE);
+                            }
+                            break;
+                        case JOptionPane.NO_OPTION:
+                            // Solicita um novo nome para o arquivo
+                            continue; // Reinicia o loop, solicitando outro nome
+                        default:
+                            // CANCEL_OPTION ou fechar diálogo
+                            salvando = false; // Encerra o processo
+                            break;
+                    }
+                } else {
+                    // Arquivo não existe, salva diretamente
+                    try {
+                        arquivo.salvar(arquivoSelecionado.getAbsolutePath(), jTextPane1);
+                        salvando = false; // Salvo com sucesso, encerra o loop
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(this, "Erro ao salvar o arquivo.", "Erro", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            } else {
+                salvando = false; // Cancelado pelo usuário
+            }
+        }
+    }//GEN-LAST:event_jmiSalvarActionPerformed
+
+    private void jmiFontePadraoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFontePadraoActionPerformed
+        StyledDocument docF = jTextPane1.getStyledDocument();
+        int start = Math.min(jTextPane1.getSelectionStart(), jTextPane1.getSelectionEnd());
+        int end = Math.max(jTextPane1.getSelectionStart(), jTextPane1.getSelectionEnd());
+        if (start == end) {
+            return; // Se não tem seleção, não vai fazer nada
+        }
+        SimpleAttributeSet defaultAttributes = new SimpleAttributeSet();
+        StyleConstants.setBold(defaultAttributes, false);
+        StyleConstants.setItalic(defaultAttributes, false);
+        StyleConstants.setUnderline(defaultAttributes, false);
+        StyleConstants.setForeground(defaultAttributes, Color.BLACK);
+        StyleConstants.setBackground(defaultAttributes, Color.WHITE);
+        docF.setCharacterAttributes(start, ((end - start) + 1), defaultAttributes, true);
+    }//GEN-LAST:event_jmiFontePadraoActionPerformed
+
+    private void jmiNegritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNegritoActionPerformed
+        StyledDocument docN = jTextPane1.getStyledDocument();
+        // Obter a posição inicial e final da seleção de forma consistente
+        int start = Math.min(jTextPane1.getSelectionStart(), jTextPane1.getSelectionEnd());
+        int end = Math.max(jTextPane1.getSelectionStart(), jTextPane1.getSelectionEnd());
+        if (start == end) {
+            return; // Se não tem seleção, não vai fazer nada
+        }
+        SimpleAttributeSet boldAttributes = new SimpleAttributeSet();
+        StyleConstants.setBold(boldAttributes, true);
+        docN.setCharacterAttributes(start, ((end - start) + 1), boldAttributes, false);
+    }//GEN-LAST:event_jmiNegritoActionPerformed
+
+    private void jmiItalicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiItalicoActionPerformed
+        StyledDocument docI = jTextPane1.getStyledDocument();
+        // Obter a posição inicial e final da seleção de forma consistente
+        int start = Math.min(jTextPane1.getSelectionStart(), jTextPane1.getSelectionEnd());
+        int end = Math.max(jTextPane1.getSelectionStart(), jTextPane1.getSelectionEnd());
+        if (start == end) {
+            return; // Se não tem seleção, não vai fazer nada
+        }
+        SimpleAttributeSet italicAttributes = new SimpleAttributeSet();
+        StyleConstants.setItalic(italicAttributes, true);
+        docI.setCharacterAttributes(start, ((end - start) + 1), italicAttributes, false);
+    }//GEN-LAST:event_jmiItalicoActionPerformed
+
+    private void jmiSublinhadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSublinhadoActionPerformed
+        StyledDocument docS = jTextPane1.getStyledDocument();
+        // Obter a posição inicial e final da seleção de forma consistente
+        int start = Math.min(jTextPane1.getSelectionStart(), jTextPane1.getSelectionEnd());
+        int end = Math.max(jTextPane1.getSelectionStart(), jTextPane1.getSelectionEnd());
+        if (start == end) {
+            return; // Se não tem seleção, não vai fazer nada
+        }
+        SimpleAttributeSet UnderLineAttributes = new SimpleAttributeSet();
+        StyleConstants.setUnderline(UnderLineAttributes, true);
+        docS.setCharacterAttributes(start, ((end - start) + 1), UnderLineAttributes, false);
+    }//GEN-LAST:event_jmiSublinhadoActionPerformed
+
+    private void jmiCorTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCorTextoActionPerformed
+        Color cor = JColorChooser.showDialog(this, "Escolher cor", Color.BLACK);
+        if (cor != null) {
+            StyledDocument docC = jTextPane1.getStyledDocument();
+            // Obter a posição inicial e final da seleção de forma consistente
+            int start = Math.min(jTextPane1.getSelectionStart(), jTextPane1.getSelectionEnd());
+            int end = Math.max(jTextPane1.getSelectionStart(), jTextPane1.getSelectionEnd());
+            if (start == end) {
+                return; // Se não tem seleção, não vai fazer nada
+            }
+            SimpleAttributeSet ForegroundAttributes = new SimpleAttributeSet();
+            StyleConstants.setForeground(ForegroundAttributes, cor);
+            docC.setCharacterAttributes(start, ((end - start) + 1), ForegroundAttributes, false);
+        }
+    }//GEN-LAST:event_jmiCorTextoActionPerformed
+
+    private void jmiAlinharEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlinharEsquerdaActionPerformed
+        jmiAlinharEsquerda.addActionListener(e -> alinharTexto(StyleConstants.ALIGN_LEFT));   // TODO add your handling code here:
+    }//GEN-LAST:event_jmiAlinharEsquerdaActionPerformed
+
+    private void jmiAlinharCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlinharCentroActionPerformed
+        jmiAlinharCentro.addActionListener(e -> alinharTexto(StyleConstants.ALIGN_CENTER));   // TODO add your handling code here:
+    }//GEN-LAST:event_jmiAlinharCentroActionPerformed
+
+    private void jmiAlinharDireitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlinharDireitaActionPerformed
+        jmiAlinharDireita.addActionListener(e -> alinharTexto(StyleConstants.ALIGN_RIGHT));    // TODO add your handling code here:
+    }//GEN-LAST:event_jmiAlinharDireitaActionPerformed
+
+    private void jmiSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSobreActionPerformed
         Sobre sobre = new Sobre(this);
-        sobre.setVisible(true);            // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        sobre.setVisible(true);    // TODO add your handling code here:
+    }//GEN-LAST:event_jmiSobreActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        editor.abrirArquivo();
-        
-        /*JFileChooser files = new JFileChooser();
-        files.setDialogType(JFileChooser.OPEN_DIALOG);
-        int result = files.showOpenDialog(null);*/
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        editor.salvarArquivo();
-        /*JFileChooser files = new JFileChooser();
-        files.setDialogType(JFileChooser.SAVE_DIALOG);
-        int result = files.showSaveDialog(null);*/
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void jmiMarcaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMarcaTextoActionPerformed
+        Color cor = JColorChooser.showDialog(this, "Escolher cor", Color.BLACK);
+        if (cor != null) {
+            StyledDocument docC2 = jTextPane1.getStyledDocument();
+            // Obter a posição inicial e final da seleção de forma consistente
+            int start = Math.min(jTextPane1.getSelectionStart(), jTextPane1.getSelectionEnd());
+            int end = Math.max(jTextPane1.getSelectionStart(), jTextPane1.getSelectionEnd());
+            if (start == end) {
+                return; // Se não tem seleção, não vai fazer nada
+            }
+            SimpleAttributeSet BackgroundAttributes = new SimpleAttributeSet();
+            StyleConstants.setBackground(BackgroundAttributes, cor);
+            docC2.setCharacterAttributes(start, ((end - start) + 1), BackgroundAttributes, false);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiMarcaTextoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,17 +376,28 @@ public class BlocoNotas extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BlocoNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BlocoNotas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BlocoNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BlocoNotas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BlocoNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BlocoNotas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BlocoNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BlocoNotas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -160,16 +409,24 @@ public class BlocoNotas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JMenuItem jmiAbrir;
+    private javax.swing.JMenuItem jmiAlinharCentro;
+    private javax.swing.JMenuItem jmiAlinharDireita;
+    private javax.swing.JMenuItem jmiAlinharEsquerda;
+    private javax.swing.JMenuItem jmiCorTexto;
+    private javax.swing.JMenuItem jmiFontePadrao;
+    private javax.swing.JMenuItem jmiItalico;
+    private javax.swing.JMenuItem jmiMarcaTexto;
+    private javax.swing.JMenuItem jmiNegrito;
+    private javax.swing.JMenuItem jmiSalvar;
+    private javax.swing.JMenuItem jmiSobre;
+    private javax.swing.JMenuItem jmiSublinhado;
     // End of variables declaration//GEN-END:variables
 }
