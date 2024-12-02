@@ -19,7 +19,7 @@ Caso |       Descrição	           |		   Entrada		      |	       Saída Esperad
      |				   |	 	   	    	  	      |					|
      |				   |                                          |					|
 4    | Verificar se um arquivo é   |   Caminho: "caminho arquivo. poo”	      |	 Texto e estilos recuperados	|
-     | carregado corretamente.     |					      |          no JTextPane.		|
+     | carregado corretamente.     |					      |  no JTextPane.		        |
      |				   |                                          |					|
      |				   |                                          |					|
 5    | Verificar tratamento de	   |   					      |  Exceção tratada com		|
