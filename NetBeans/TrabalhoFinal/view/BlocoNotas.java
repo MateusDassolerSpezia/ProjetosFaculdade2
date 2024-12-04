@@ -15,8 +15,8 @@ import java.io.IOException;
 import javax.swing.text.*;
 
 /**
- *
- * @author Mateus
+ * Classe BlocoNotas
+ * @author Mateus e Vinícius - 2024
  */
 public class BlocoNotas extends javax.swing.JFrame {
 
@@ -59,6 +59,7 @@ public class BlocoNotas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Editor de Texto");
         setBackground(new java.awt.Color(51, 51, 51));
+        setPreferredSize(new java.awt.Dimension(600, 400));
 
         jTextPane1.setPreferredSize(new java.awt.Dimension(600, 400));
         jScrollPane2.setViewportView(jTextPane1);
@@ -239,7 +240,7 @@ public class BlocoNotas extends javax.swing.JFrame {
                             // Solicita um novo nome para o arquivo
                             continue; // Reinicia o loop, solicitando outro nome
                         default:
-                            // CANCEL_OPTION ou fechar diálogo
+                            // CANCEL_OPTION
                             salvando = false; // Encerra o processo
                             break;
                     }
@@ -330,20 +331,20 @@ public class BlocoNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiCorTextoActionPerformed
 
     private void jmiAlinharEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlinharEsquerdaActionPerformed
-        jmiAlinharEsquerda.addActionListener(e -> alinharTexto(StyleConstants.ALIGN_LEFT));   // TODO add your handling code here:
+        jmiAlinharEsquerda.addActionListener(e -> alinharTexto(StyleConstants.ALIGN_LEFT));  
     }//GEN-LAST:event_jmiAlinharEsquerdaActionPerformed
 
     private void jmiAlinharCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlinharCentroActionPerformed
-        jmiAlinharCentro.addActionListener(e -> alinharTexto(StyleConstants.ALIGN_CENTER));   // TODO add your handling code here:
+        jmiAlinharCentro.addActionListener(e -> alinharTexto(StyleConstants.ALIGN_CENTER));   
     }//GEN-LAST:event_jmiAlinharCentroActionPerformed
 
     private void jmiAlinharDireitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlinharDireitaActionPerformed
-        jmiAlinharDireita.addActionListener(e -> alinharTexto(StyleConstants.ALIGN_RIGHT));    // TODO add your handling code here:
+        jmiAlinharDireita.addActionListener(e -> alinharTexto(StyleConstants.ALIGN_RIGHT));    
     }//GEN-LAST:event_jmiAlinharDireitaActionPerformed
 
     private void jmiSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSobreActionPerformed
         Sobre sobre = new Sobre(this);
-        sobre.setVisible(true);    // TODO add your handling code here:
+        sobre.setVisible(true); 
     }//GEN-LAST:event_jmiSobreActionPerformed
 
     private void jmiMarcaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMarcaTextoActionPerformed

@@ -8,8 +8,8 @@ import java.io.Serializable;
 import javax.swing.text.StyledDocument;
 
 /**
- * 
- * @author Mateus
+ * Classe Serializacao
+ * @author Mateus e Vinícius - 2024
  */
 public class Serializacao implements Serializable {
 

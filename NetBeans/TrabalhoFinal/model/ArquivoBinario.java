@@ -7,12 +7,11 @@ package model;
 
 import java.io.*;
 import java.nio.file.*;
-import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 
 /**
- * 
- * @author Mateus
+ * Classe ArquivoBinario
+ * @author Mateus e Vinícius - 2024
  */
 public class ArquivoBinario {
         

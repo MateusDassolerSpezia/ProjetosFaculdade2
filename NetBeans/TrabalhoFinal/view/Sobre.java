@@ -93,7 +93,7 @@ public class Sobre extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-                    // TODO add your handling code here:
+                    setLocationRelativeTo(bN);
     }//GEN-LAST:event_formWindowOpened
 
     /**
