@@ -74,7 +74,7 @@ SELECT h.nm_hotel AS 'Hotel'
 		,f.ds_email AS 'E-mail funcionário'
 FROM hotel h, funcionario f
 WHERE h.cd_hotel = f.cd_hotel
-ORDER BY h.nm_hotel AND f.nm_funcionario;
+ORDER BY h.nm_hotel, f.nm_funcionario;
 
 -- Questão 5:
 SELECT h.nm_hotel AS 'Hotel'
@@ -89,7 +89,7 @@ SELECT h.nm_hotel
 		,c.ds_categoria
 FROM hotel h, quarto q, categoria c
 WHERE h.cd_hotel = q.cd_hotel AND c.cd_categoria = q.cd_categoria
-GROUP BY h.cd_hotel AND c.ds_categoria;
+GROUP BY h.cd_hotel, c.ds_categoria;
 
 
 
